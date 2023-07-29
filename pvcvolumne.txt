@@ -1,0 +1,1 @@
+oc set volumes deploy dbapp --add --name mydbapp-volumne --type pvc --claim-class gp2 --claim-mode rwm --claim-size 5Gi --mount-path /var/lib/mysql --claim-name mydbapp-pvc
