@@ -1,0 +1,18 @@
+oc get pods
+oc new-app --name dbapp --image=mysql -e MYSQL_ROOT_PASSWORD=redhat -e MYSQL_USER=vimal -e MYSQL_PASSWORD=redhat -e MYSQL_DATABASE=lwdb
+oc get svc
+oc scale --replicas=3 deploy/dbapp
+oc describe svc
+oc describe svc dbapp
+oc get pods
+oc get pods -o wide
+oc new-app --name=webapp https://github.com/WordPress/WordPress.git
+oc new-app --name=webapp php~https://github.com/WordPress/WordPress.git
+oc get bc
+oc get describe svc webapp
+oc describe svc webapp
+oc expose svc webapp
+oc get route
+oc scale --replicas=1 deploy/dbapp
+oc get svc
+doskey /history
