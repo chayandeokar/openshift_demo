@@ -1,1 +1,26 @@
-oc set volumes deploy dbapp --add --name mydbapp-volumne --type pvc --claim-class gp2 --claim-mode rwm --claim-size 5Gi --mount-path /var/lib/mysql --claim-name mydbapp-pvc
+## Command to create Volumne in Openshift we can attach volumne and storage 
+>> oc set volumes deploy dbapp --add --name mydbapp-volumne --type pvc --claim-class gp2 --claim-mode rwo --claim-size 5Gi --mount-path /var/lib/mysql --claim-name mydbapp-pvc
+
+## Command to Give ClusterIP None so that anyone can connect by name not by IP. Beacuse IP can be changed
+>> oc create service clusterip my-cs --clusterip="None"
+
+## Command TO create scerct and hide credentials
+>> oc create secret generic dbsecret --from-literal=user=redhat --from-literal=password=redhat --from-literal=database=lwdb --from -literal=root_password=redhat
+>> oc get secret dbsecret  
+
+## Adding prefix in the variable name Command:-
+>> oc set env --from secret/(name of secret)  deploy/(deploy name) --prefix  (value)
+
+## Injecting secret from the command line Command: 
+>> oc set env --from secret/(name of secret) deploy/(deploy name)
+
+## Storing the local file in the config map Command:-
+>> oc create configmap (name)  --from-file=(Key name=file name)
+>> oc describe cm (name)
+
+## Setting volume from config map oCommand:-
+>> oc set volumes  deploy/(name)  --add--type=configmap  --configmap-name= (name) --mount-path=(path)
+
+
+
+
