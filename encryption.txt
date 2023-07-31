@@ -1,0 +1,4 @@
+>> oc new-app --name=webapp php~https://github.com/WordPress/WordPress.git
+>> oc get svc
+>> oc create route edge mysroute --service=wordpress
+>> oc expose service/webapp
