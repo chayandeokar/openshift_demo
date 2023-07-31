@@ -1,0 +1,14 @@
+## htpasswd command has the capability to create the password in MD5 encryption or SHA 
+>> Command:- htpasswd -b -B -c (file name) (username) (password)
+
+## Creating a secret in the openshift-config project 
+>> Command:-oc create secret generic (name) –from-file htpasswd=(file name
+
+## Assign new user a project so they can also access it
+>> oc policy add-role-to-user view tom
+
+## Giving edit power to Tom user 
+>> oc policy add-role-to-user  edit (username)
+
+## From the admin account,we can see all the role bindings we have 
+>> oc get rolebindings -o wide
